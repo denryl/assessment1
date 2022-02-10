@@ -1,0 +1,50 @@
+<%- include('header') -%>
+<div class="shadow p-3 mb-5 bg-white rounded" style="margin: 2%; padding: 3%;">
+    <h1>Admin Dashboard</h1>
+    <div class="card" style="width: 18rem;">
+        <img class="card-img-top" src="https://upload.wikimedia.org/wikipedia/commons/f/ff/BTS_logo_%282017%29.png" alt="Card image cap">
+        <div class="card-body">
+          <h5 class="card-title">Add a Product</h5>
+          <p class="card-text">Let's add a product</p>
+          <a href="/addproduct" class="btn btn-primary">Add a Product Here</a>
+        </div>
+      </div>
+    <% if(products!=null){ %>
+
+    <table class="table">
+        <thead>
+          <tr>
+            <th scope="col">#</th>
+            <th scope="col">Name</th>
+            <th scope="col">Description</th>
+            <th scope="col">Status</th>
+            <th scope="col">Progress</th>
+            <th scope="col">Display Picture</th>
+            <th scope="col">Link</th>
+            <th scope="col">Date</th>
+            <th scope="col">Edit</th>
+            <th scope="col">Delete</th>
+          </tr>
+        </thead>
+        <tbody>
+            <% for(let i=0;i<products.length;i++){ %>
+                <tr>
+                    <th scope="row"><%= i+1 %> </th>
+                    <td scope="row"><%= products[i].pname %></td>
+                    <td><%= products[i].description %></td>
+                    <td><%= products[i].status %></td>
+                    <td><%= products[i].pprogress %></td>
+                    <td><img src="<%= products[i].picture %>" style="width: 300px; height: 200px;"></td>
+                    <td><a href="https://<%= products[i].plink %>"><%= products[i].plink %></a></td>
+                    <td><%= products[i].date %></td>
+                    <td><a type="button" href="/editproduct/<%= products[i].id %>" class="btn btn-info">Edit Product</button></td>
+                    <td><a type="button" href="/deleteproject/<%= products[i].id %>" class="btn btn-danger">Delete Product</button></td>
+                  </tr>
+           <% } %>
+          
+        </tbody>
+      </table>
+      <% } else{ %>
+        <h1> You do not have any recurring record.</h1>
+    <%   } %>
+</div>

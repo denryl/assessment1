@@ -1,0 +1,38 @@
+<%- include('header') -%>
+<div class="shadow p-3 mb-5 bg-white rounded" style="margin: 2%; padding: 3%;">
+    <% if(data!=null){ %>
+
+        <table class="table">
+            <thead>
+              <tr>
+                <th scope="col">#</th>
+                <th scope="col"> Name</th>
+                <th scope="col"> Description</th>
+                <th scope="col"> Status</th>
+                <th scope="col"> Progress</th>
+                <th scope="col"> Display Picture</th>
+                <th scope="col"> Link</th>
+                <th scope="col"> Date</th>
+
+              </tr>
+            </thead>
+            <tbody>
+                <% for(let i=0;i<data.length;i++){ %>
+                    <tr>
+                        <th scope="row"><%= i+1 %> </th>
+                        <td scope="row"><%= data[i].pame %></td>
+                        <td><%= data[i].description %></td>
+                        <td><%= data[i].status %></td>
+                        <td><%= data[i].pprogress %></td>
+                        <td><img src="<%= data[i].picture %>" style="width: 300px; height: 200px;"></td>
+                        <td><a href="https://<%= data[i].plink %>"><%= data[i].plink %></a></td>
+                        <td><%= data[i].date %></td>
+                      </tr>
+               <% } %>
+              
+            </tbody>
+          </table>
+          <% } else{ %>
+            <h1> I don't have a record yet.</h1>
+        <%   } %>
+</div>
